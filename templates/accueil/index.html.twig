@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un ticket{% endblock %}
+
+{% block body %}
+
+{% for message in app.flashes('success') %}
+    <div>
+        {{ message }}
+    </div>
+{% endfor %}
+
+  {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+        <div>
+            {{ form_row(form.auteur) }}
+        </div>
+
+        <div>
+            {{ form_row(form.description) }}
+        </div>
+
+        <div>
+            {{ form_row(form.categorie) }}
+        </div>
+
+        <button type="submit">
+            Envoyer
+        </button>
+
+    {{ form_end(form) }}
+
+
+{% endblock %}
