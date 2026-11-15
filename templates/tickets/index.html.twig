@@ -4,7 +4,15 @@
 {% block title %}Liste des tickets{% endblock %} 
 
 
+ 
 {% block body %}
+
+{% for message in app.flashes('success') %}
+    <div>
+        {{ message }}
+    </div>
+{% endfor %}
+
 
     <h1>Liste des tickets</h1>
 
