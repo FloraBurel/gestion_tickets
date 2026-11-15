@@ -19,21 +19,38 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        // Création d'un utilisateur
-        $user = new User();
+        // Création d'un administrateur
+        $admin = new User();
 
         // Définition de son email
-        $user->setEmail('test@example.com');
+        $admin->setEmail('admin@example.com');
 
         // Définition de son rôle
-        $user->setRoles(['ROLE_USER','ROLE_ADMIN']);
+        $admin->setRoles(['ROLE_USER','ROLE_ADMIN']);
 
         // Hachage du mot de passe
-        $user->setPassword($this->passwordHasher->hashPassword($user,'Tickets2026!')
+        $admin->setPassword($this->passwordHasher->hashPassword($admin,'Admin2026!')
         );
 
         // Préparation de l'enregistrement
-        $manager->persist($user);
+        $manager->persist($admin);
+
+
+        // Création d'un personnel
+        $personnel = new User();
+
+        // Définition de son email
+        $personnel->setEmail('personnel@example.com');
+
+        // Définition de son rôle
+        $personnel->setRoles(['ROLE_USER','ROLE_PERSONNEL']);
+
+        // Hachage du mot de passe
+        $personnel->setPassword($this->passwordHasher->hashPassword($personnel,'Personnel2026!')
+        );
+
+        // Préparation de l'enregistrement
+        $manager->persist($personnel);
 
 
         // Création de catégorie et du tableau des données
