@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -32,17 +30,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
-
-    /**
-     * @var Collection<int, Tickets>
-     */
-    #[ORM\OneToMany(targetEntity: Tickets::class, mappedBy: 'responsable')]
-    private Collection $tickets;
-
-    public function __construct()
-    {
-        $this->tickets = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -125,33 +112,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // @deprecated, to be removed when upgrading to Symfony 8
     }
 
-    /**
-     * @return Collection<int, Tickets>
-     */
-    public function getTickets(): Collection
-    {
-        return $this->tickets;
-    }
-
-    public function addTicket(Tickets $ticket): static
-    {
-        if (!$this->tickets->contains($ticket)) {
-            $this->tickets->add($ticket);
-            $ticket->setResponsable($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTicket(Tickets $ticket): static
-    {
-        if ($this->tickets->removeElement($ticket)) {
-            // set the owning side to null (unless already changed)
-            if ($ticket->getResponsable() === $this) {
-                $ticket->setResponsable(null);
-            }
-        }
-
-        return $this;
-    }
+   
 }

@@ -44,9 +44,9 @@ class Tickets
     #[ORM\JoinColumn(nullable: false)]
     private ?Etat $etat = null;
 
-    #[ORM\ManyToOne(inversedBy: 'tickets')]
+    #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: true)]
-    private ?User $responsable = null;
+    private ?Responsable $responsable = null;
 
     public function getId(): ?int
     {
@@ -125,12 +125,12 @@ class Tickets
         return $this;
     }
 
-    public function getResponsable(): ?User
+    public function getResponsable(): ?Responsable
     {
-        return $this->responsable;
+            return $this->responsable;
     }
 
-    public function setResponsable(?User $responsable): static
+    public function setResponsable(?Responsable $responsable): static
     {
         $this->responsable = $responsable;
 

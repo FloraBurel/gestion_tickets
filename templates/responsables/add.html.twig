@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un responsable{% endblock %}
+
+{% block body %}
+
+  {{ form_start(form) }}
+
+        <div>
+            {{ form_widget(form) }}
+        </div>
+
+        <button type="submit">
+            Ajouter un nouveau responsable
+        </button>
+
+  {{ form_end(form) }}
+
+
+{% endblock %}
+

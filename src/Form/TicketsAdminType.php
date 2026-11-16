@@ -5,7 +5,7 @@ namespace App\Form;
 use App\Entity\Categorie;
 use App\Entity\Etat;
 use App\Entity\Tickets;
-use App\Entity\User;
+use App\Entity\Responsable;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -27,8 +27,10 @@ class TicketsAdminType extends AbstractType
                 'choice_label' => 'nom',
             ])
             ->add('responsable', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'email',
+                'class' => Responsable::class,
+                'choice_label' => 'nom',
+                'required' => false,
+                'placeholder' => 'Aucun responsable',
             ])
         ;
     }
