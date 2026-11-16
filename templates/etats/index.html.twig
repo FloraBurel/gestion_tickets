@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des états{% endblock %}
+
+{% block body %}
+
+{% for message in app.flashes('success') %}
+    <div>
+        {{ message }}
+    </div>
+{% endfor %}
+
+<h1>Liste des états</h1>
+<table>
+<thead><tr><th>Etats</th></tr></thead>
+<tbody>{% for etat in etats %}<tr><td>{{ etat.nom }}</td><td><a href="{{ path('app_etat_edit', {'id': etat.id}) }}">Modifier</a></td></tr>
+{% endfor %}</tbody>
+</table>
+<a href="{{ path('app_etat_add') }}">Ajouter</a>
+{% endblock %}
+

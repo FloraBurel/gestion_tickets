@@ -4,6 +4,11 @@
 
 {% block body %}
 
+{% for message in app.flashes('success') %}
+    <div>
+        {{ message }}
+    </div>
+{% endfor %}
 
 <h1>Liste des catégories</h1>
 <table>

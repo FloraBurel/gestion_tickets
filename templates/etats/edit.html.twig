@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier les états{% endblock %}
+
+{% block body %}
+
+  {{ form_start(form) }}
+
+        <div>
+            {{ form_widget(form) }}
+        </div>
+
+        <button type="submit">
+            Enregistrer les modifications
+        </button>
+
+  {{ form_end(form) }}
+
+
+{% endblock %}
+

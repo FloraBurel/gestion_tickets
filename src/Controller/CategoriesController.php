@@ -18,7 +18,7 @@ final class CategoriesController extends AbstractController {
         public function categories(CategorieRepository $categorieRepository): Response
         {
             $categories = $categorieRepository->findAll();
-            return $this->render('tickets/categories.html.twig', [
+            return $this->render('categories/index.html.twig', [
                 'categories' => $categories,
             ]);
 
@@ -56,7 +56,7 @@ final class CategoriesController extends AbstractController {
         return $this->redirectToRoute('app_categories');
         };
 
-        return $this->render('tickets/categorie_edit.html.twig', [
+        return $this->render('categories/edit.html.twig', [
             'categorie' => $categorie,
             'form' => $form->createView(),
         ]);
@@ -95,7 +95,7 @@ final class CategoriesController extends AbstractController {
         return $this->redirectToRoute('app_categories');
         };
 
-        return $this->render('tickets/categorie_add.html.twig', [
+        return $this->render('categories/add.html.twig', [
             'categorie' => $categorie,
             'form' => $form->createView(),
         ]);

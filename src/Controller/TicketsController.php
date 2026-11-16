@@ -66,10 +66,7 @@ final class TicketsController extends AbstractController
 
         // Redirection vers la liste de tickets
         return $this->redirectToRoute('app_tickets');
-        } 
-        
-       
-        
+        };
 
         return $this->render('tickets/edit.html.twig', [
             'ticket' => $ticket,
@@ -77,3 +74,4 @@ final class TicketsController extends AbstractController
         ]);
     }
 }
+
