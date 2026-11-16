@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une catégorie{% endblock %}
+
+{% block body %}
+
+
+{% for message in app.flashes('success') %}
+    <div>
+        {{ message }}
+    </div>
+{% endfor %}
+
+  {{ form_start(form) }}
+
+        <div>
+            {{ form_widget(form) }}
+        </div>
+
+        <button type="submit">
+            Ajouter la catégorie
+        </button>
+
+  {{ form_end(form) }}
+
+
+{% endblock %}
+
