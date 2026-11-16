@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Repository\TicketsRepository;
 use App\Form\TicketsPersonnelType;
+use App\Form\TicketsAdminType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -32,8 +33,11 @@ final class TicketsController extends AbstractController
         if (!$ticket) {
         throw $this->createNotFoundException('Ticket introuvable');}
 
-        // Création du formualaire 
-        $form = $this->createForm(TicketsPersonnelType::class,$ticket);
+        // Création du formulaire en fonction du role
+        if ($this->isGranted('ROLE_ADMIN') === true) {
+        $form = $this->createForm(TicketsAdminType::class,$ticket);} 
+        else {
+        $form = $this->createForm(TicketsPersonnelType::class,$ticket);}
 
         // Récupération des données envoyées
         $form->handleRequest($request);
@@ -44,11 +48,11 @@ final class TicketsController extends AbstractController
         // Récupération des valeurs
         $etat = $ticket->getEtat()->getNom();
 
-        // Attribution de la date de cloture automatiquement si résolu sinon supprime 
-        if($etat === 'Résolu' && $ticket->getDateCloture() === null){
+        // Attribution de la date de cloture automatiquement si fermé sinon date = null
+        if($etat === 'Fermé' && $ticket->getDateCloture() === null){
         $ticket->setDateCloture (new \DateTimeImmutable());}
 
-        elseif ($etat !== 'Résolu') {
+        elseif ($etat !== 'Fermé') {
             $ticket->setDateCloture(null);
         }
 
