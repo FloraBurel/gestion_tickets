@@ -41,6 +41,17 @@ final class TicketsController extends AbstractController
         // Vérification de l'envoi et de la validité
         if ($form->isSubmitted() && $form->isValid()) {
 
+        // Récupération des valeurs
+        $etat = $ticket->getEtat()->getNom();
+
+        // Attribution de la date de cloture automatiquement si résolu sinon supprime 
+        if($etat === 'Résolu' && $ticket->getDateCloture() === null){
+        $ticket->setDateCloture (new \DateTimeImmutable());}
+
+        elseif ($etat !== 'Résolu') {
+            $ticket->setDateCloture(null);
+        }
+
         // Enregistrement dans la base
         $manager->flush();
 

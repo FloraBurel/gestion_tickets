@@ -37,7 +37,8 @@
     {{ ticket.responsable.email }}
     {% else %}
         Non attribué
-    {% endif %} </td></tr>
+    {% endif %} </td>
+    <td><a href="{{ path('app_ticket_edit', {'id': ticket.id}) }}">Modifier</a></td></tr>
 
     {% endfor %}
     </tbody>
