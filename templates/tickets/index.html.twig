@@ -24,35 +24,40 @@
     
 
     <div class="bg-white rounded-4 shadow-sm p-4">
-    <table class="table table-hover align-middle">
-    <thead><tr><th>ID</th><th>Auteur</th><th>Description</th><th>Date d'ouverture</th><th>Date de cloture</th><th>Catégorie</th><th>État</th><th>Responsable</th><th></th></tr></thead>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead><tr><th>ID</th><th>Auteur</th><th>Description</th><th>Date d'ouverture</th><th>Date de cloture</th><th>Catégorie</th><th>État</th><th>Responsable</th><th></th></tr></thead>
     
-    <tbody>
-    {% for ticket in tickets %}
+                <tbody>
+                     {% for ticket in tickets %}
 
-    <tr><td>{{ ticket.id }}</td>
-    <td>{{ ticket.auteur }}</td>
-    <td>{{ ticket.description }}</td>
-    <td>{{ ticket.dateOuverture|date('d/m/Y') }}</td>
-    <td>{% if ticket.dateCloture %}
-    {{ ticket.dateCloture|date('d/m/Y') }}
-    {% else %}
-        Non clôturé
-    {% endif %}</td>
-    <td>{{ ticket.categorie.nom }}</td>
-    <td>{{ ticket.etat.nom }}</td>
-    <td>{% if ticket.responsable %}
-    {{ ticket.responsable.email }}
-    {% else %}
-        Non attribué
-    {% endif %} </td>
-    <td><a href="{{ path('app_ticket_edit', {'id': ticket.id}) }}">Modifier</a></td></tr>
+                        <tr><td>{{ ticket.id }}</td>
+                        <td>{{ ticket.auteur }}</td>
+                        <td>{{ ticket.description }}</td>
+                        <td>{{ ticket.dateOuverture|date('d/m/Y') }}</td>
+                        
+                        <td>{% if ticket.dateCloture %}
+                        {{ ticket.dateCloture|date('d/m/Y') }}
+                        {% else %}
+                            Non clôturé
+                        {% endif %}</td>
 
-    {% endfor %}
-    </tbody>
-    </table>
+                        <td>{{ ticket.categorie.nom }}</td>
+                        <td>{{ ticket.etat.nom }}</td>
 
+                        <td>{% if ticket.responsable %}
+                        {{ ticket.responsable.email }}
+                        {% else %}
+                            Non attribué
+                        {% endif %} </td>
+        
+                        <td><a href="{{ path('app_ticket_edit', {'id': ticket.id}) }}">Modifier</a></td></tr>
+
+                     {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
     </div>
-</div>
    
 {% endblock %}
