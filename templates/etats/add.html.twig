@@ -17,11 +17,11 @@
 
 
 
-
-                    {{ form_start(form) }}
-
+                    {# Désactive Turbo pour permettre l'affichage des erreurs de validation du formulaire. #}
+                    {{ form_start(form, {'attr': {'data-turbo': 'false'}}) }}
+  
                             <div>
-                                {{ form_widget(form) }}
+                            {{ form_row(form.nom) }}
                             </div>
                             
                             <div class="text-center mt-4">

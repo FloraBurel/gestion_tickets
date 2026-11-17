@@ -25,7 +25,11 @@
                     <thead><tr><th>Nom</th><th class="text-end"></th></tr></thead>
                 <tbody>
                     {% for etat in etats %}
-                        <tr><td>{{ etat.nom }}</td><td class="text-end"><a href="{{ path('app_etat_edit', {'id': etat.id}) }}">Modifier</a></td></tr>
+                        <tr><td>{{ etat.nom }}</td><td class="text-end">
+                            {% if etat.nom != 'Nouveau' and etat.nom != 'Fermé' %}
+                            <a href="{{ path('app_etat_edit', {'id': etat.id}) }}">Modifier</a>
+                            {% endif %}
+                        </td></tr>
                     {% endfor %}
                 </tbody>
             </table>

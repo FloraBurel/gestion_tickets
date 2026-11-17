@@ -11,15 +11,34 @@
     </div>
 {% endfor %}
 
-  {{ form_start(form) }}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
 
-        <div>
-            {{ form_widget(form) }}
+            <h1>Modifier le statut du ticket</h1>
+                
+            <div class="accent-menthe mb-4"></div>
+
+            <div class="bg-white rounded-4 shadow-sm p-4">
+
+                {# Désactive Turbo pour permettre l'affichage des erreurs de validation du formulaire. #}
+                    {{ form_start(form, {'attr': {'data-turbo': 'false'}}) }}
+
+
+                    <div>
+                        {{ form_widget(form) }}
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button class="btn btn-primary" type="submit">
+                            Enregistrer les modifications
+                        </button>
+                    </div>
+            </div>
         </div>
+    </div>
+</div>
 
-        <button type="submit">
-            Enregistrer les modifications
-        </button>
 
   {{ form_end(form) }}
 

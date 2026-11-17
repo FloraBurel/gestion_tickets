@@ -6,17 +6,25 @@ use App\Repository\EtatRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: EtatRepository::class)]
+#[UniqueEntity(fields: ['nom'], message: 'Ce nom existe déjà.')]
 class Etat
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
-    #[ORM\Column(length: 255)]
+    
+    // unique : true evite les doublons
+    #[ORM\Column(length: 255, unique: true)]
+    #[Assert\NotBlank( message : 'Le nom est obligatoire')]
     private ?string $nom = null;
+
+
+   
 
     /**
      * @var Collection<int, Tickets>

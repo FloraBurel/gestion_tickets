@@ -28,16 +28,21 @@ final class EtatsController extends AbstractController {
 
     #[Route('/admin/etats/{id}/edit', name: 'app_etat_edit')]
     public function edit(int $id, EtatRepository $etatRepository, Request $request, EntityManagerInterface $manager): Response
-    {
+    {   
+        // Récupère l'id de l'état
         $etat = $etatRepository->find($id);
         
         // Permet de contrôler si l'état existe sinon envoi une erreur 
-        if (!$etat) {
+         if (!$etat) {
         throw $this->createNotFoundException('Etat introuvable');}
 
+        // Interdit la modification de nouveau et fermé qui sont indispensables au bon foncitonnement de l'appli
+        if ($etat->getNom() === 'Nouveau' || $etat->getNom() === 'Fermé') 
+        {   throw $this->createAccessDeniedException('Cet état ne peut pas être modifié.');}
+            
         // Création du formulaire 
         $form = $this->createForm(EtatType::class,$etat);
-
+       
         // Récupération des données envoyées
         $form->handleRequest($request);
 
@@ -45,7 +50,7 @@ final class EtatsController extends AbstractController {
         if ($form->isSubmitted() && $form->isValid()) {
 
         // Enregistrement dans la base
-        $manager->flush();
+        $manager->flush(); 
 
         // Création d'un message de confirmation
         $this->addFlash(
@@ -53,8 +58,8 @@ final class EtatsController extends AbstractController {
           'Les données ont bien été modifiées!');
 
         // Redirection vers la liste des états
-        return $this->redirectToRoute('app_etats');
-        };
+        return $this->redirectToRoute('app_etats');}
+      
 
         return $this->render('etats/edit.html.twig', [
             'etat' => $etat,

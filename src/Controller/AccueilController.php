@@ -34,9 +34,14 @@ final class AccueilController extends AbstractController
 
         // Recherche l'état 'Nouveau'
         $etat = $etatRepository->findOneBy(['nom' => 'Nouveau']);
-
+    
+        if (!$etat) {
+        // Si l'état nouveau n'existe pas renvoi un erreur
+        throw new \RuntimeException('L\'état Nouveau est introuvable.');
+        }
+    
         // Attribut l'état 'Nouveau'
-        $data->setEtat($etat);
+        $data->setEtat($etat); 
 
         // Préparation de l'enregistrement
         $manager->persist($data);

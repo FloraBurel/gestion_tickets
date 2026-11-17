@@ -14,7 +14,8 @@
 
             <div class="bg-white rounded-4 shadow-sm p-4">
 
-                {{ form_start(form) }}
+                {# Désactive Turbo pour permettre l'affichage des erreurs de validation du formulaire. #}
+                    {{ form_start(form, {'attr': {'data-turbo': 'false'}}) }}
 
                     <div>
                         {{ form_widget(form) }}
@@ -26,10 +27,10 @@
                     </div>
 
                 {{ form_end(form) }}
-</div>
-    </div>
-        </div>
             </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
 
