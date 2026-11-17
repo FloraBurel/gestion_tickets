@@ -43,7 +43,7 @@ class AppFixtures extends Fixture
         $personnel->setEmail('personnel@example.com');
 
         // Définition de son rôle
-        $personnel->setRoles(['ROLE_USER','ROLE_PERSONNEL']);
+        $personnel->setRoles(['ROLE_USER','ROLE_STAFF']);
 
         // Hachage du mot de passe
         $personnel->setPassword($this->passwordHasher->hashPassword($personnel,'Personnel2026!')
