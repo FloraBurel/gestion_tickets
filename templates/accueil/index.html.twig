@@ -10,27 +10,48 @@
     </div>
 {% endfor %}
 
-  {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+ 
+        
 
-        <div>
-            {{ form_row(form.auteur) }}
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+        
+                    <h1>Créer un ticket</h1>
+                    <div class="accent-menthe mb-4"></div>
+                    <p>Décrivez votre demande dans le formulaire ci-dessous</p>
+
+                    <div class="bg-white rounded-4 shadow-sm p-4">
+                            {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                                <div>
+                                    {{ form_row(form.auteur) }}
+                                </div>
+
+                                <div>
+                                    {{ form_row(form.description) }}
+                                </div>
+
+                                <div>
+                                    {{ form_row(form.categorie) }}
+                                </div> 
+                                
+                                <div class="text-center mt-4">
+                                    <button class="btn btn-primary" type="submit">
+                                        Envoyer
+                                    </button>
+                                </div>
+
+                            {{ form_end(form) }}
+
+                     </div>
+                </div>
+            </div>
         </div>
-
-        <div>
-            {{ form_row(form.description) }}
-        </div>
-
-        <div>
-            {{ form_row(form.categorie) }}
-        </div>
+        
 
 
-
-        <button type="submit">
-            Envoyer
-        </button>
-
-    {{ form_end(form) }}
+       
 
 
 {% endblock %}

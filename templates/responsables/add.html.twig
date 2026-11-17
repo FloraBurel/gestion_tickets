@@ -4,17 +4,35 @@
 
 {% block body %}
 
-  {{ form_start(form) }}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
 
-        <div>
-            {{ form_widget(form) }}
+        <h1>Ajouter un responsable</h1>
+                
+            <div class="accent-menthe mb-4"></div>
+
+            <div class="bg-white rounded-4 shadow-sm p-4">
+
+
+                {{ form_start(form) }}
+
+                        <div>
+                            {{ form_widget(form) }}
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                        <button class="btn btn-primary" type="submit">
+                            Enregistrer
+                        </button>
+                        </div>
+
+                {{ form_end(form) }}
+
+            </div>
         </div>
-
-        <button type="submit">
-            Ajouter un nouveau responsable
-        </button>
-
-  {{ form_end(form) }}
+    </div>
+</div>
 
 
 {% endblock %}

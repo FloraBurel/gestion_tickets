@@ -13,11 +13,19 @@
     </div>
 {% endfor %}
 
+    <div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="mb-0">Tickets</h1>
 
-    <h1>Liste des tickets</h1>
+    <a href="{{ path('app_accueil') }}" class="btn btn-primary">
+        + Nouveau ticket
+    </a>
+    </div>
+    
 
-    <table>
-    <thead><tr><th>ID</th><th>Auteur</th><th>Description</th><th>Date d'ouverture</th><th>Date de cloture</th><th>Catégorie</th><th>État</th><th>Responsable</th></tr></thead>
+    <div class="bg-white rounded-4 shadow-sm p-4">
+    <table class="table table-hover align-middle">
+    <thead><tr><th>ID</th><th>Auteur</th><th>Description</th><th>Date d'ouverture</th><th>Date de cloture</th><th>Catégorie</th><th>État</th><th>Responsable</th><th></th></tr></thead>
     
     <tbody>
     {% for ticket in tickets %}
@@ -43,5 +51,8 @@
     {% endfor %}
     </tbody>
     </table>
+
+    </div>
+</div>
    
 {% endblock %}

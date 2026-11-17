@@ -1,21 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier les responsables{% endblock %}
+{% block title %}Modifier le responsable{% endblock %}
 
 {% block body %}
 
-  {{ form_start(form) }}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
 
-        <div>
-            {{ form_widget(form) }}
+            <h1>Modifier le responsable</h1>
+                
+            <div class="accent-menthe mb-4"></div>
+
+            <div class="bg-white rounded-4 shadow-sm p-4">
+
+                {{ form_start(form) }}
+
+                    <div>
+                        {{ form_widget(form) }}
+                    </div>
+                    <div class="text-center mt-4">
+                        <button class="btn btn-primary" type="submit">
+                            Enregistrer les modifications
+                        </button>
+                    </div>
+
+                {{ form_end(form) }}
+</div>
+    </div>
         </div>
-
-        <button type="submit">
-            Enregistrer les modifications
-        </button>
-
-  {{ form_end(form) }}
-
+            </div>
 
 {% endblock %}
 

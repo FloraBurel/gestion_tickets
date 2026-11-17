@@ -1,3 +1,56 @@
+/* Couleurs générales */
 body {
-    background-color: skyblue;
+    background-color: #F7F5F4;
+    color: #433A40;
+}
+
+/* Barre de navigation */
+.navbar {
+    background-color: #813B59 !important;
+}
+
+.navbar .nav-link {
+    color: #F1DCE5;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: #FFFFFF;
+}
+
+/* Boutons Bootstrap */
+.btn-primary {
+    --bs-btn-bg: #A84568;
+    --bs-btn-border-color: #A84568;
+    --bs-btn-hover-bg: #813B59;
+    --bs-btn-hover-border-color: #813B59;
+    --bs-btn-active-bg: #813B59;
+    --bs-btn-active-border-color: #813B59;
+    --bs-btn-disabled-bg: #A84568;
+    --bs-btn-disabled-border-color: #A84568;
+}
+
+/* Liens */
+a {
+    color: #813B59;
+    font-weight: 600;
+    text-decoration: none;
+
+}
+
+/* Titres */
+h1, h2 {
+    color: #813B59;
+}
+
+.accent-menthe {
+    width: 48px;
+    height: 4px;
+    background-color: #69B7A1;
+    border-radius: 10px;
+}
+
+/* Pied de page */
+footer {
+    background-color: #813B59 !important;
 }
